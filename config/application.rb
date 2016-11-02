@@ -1,3 +1,7 @@
+# DAN--how do I get rid of the error to rake db:migrate every time I run a test? I googled and got lost in the answers:
+# /Users/Suzannah/ada/project_forks/api-muncher/db/schema.rb doesn't exist yet. Run `rake db:migrate` to create it, then try again. If you do not intend to use a database, you should instead alter /Users/Suzannah/ada/project_forks/api-muncher/config/application.rb to limit the frameworks that will be loaded.
+
+
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'

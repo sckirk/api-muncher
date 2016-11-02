@@ -15,7 +15,7 @@ class ChannelTest < ActiveSupport::TestCase
         ingredients = ["tomatoes", "onions"]
         dietary_info = ["Vegan", "Gluten-Free"]
         r = Recipe.new(name, url, ingredients, dietary_info)
-        assert_kind_of Recipe, recipe
+        assert_kind_of Recipe, r
         assert_equal r.name, name
         assert_equal r.url, url
         assert_equal r.ingredients, ingredients
