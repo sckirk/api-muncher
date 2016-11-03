@@ -65,4 +65,11 @@ class ChannelTest < ActiveSupport::TestCase
             assert_not_nil recipe
         end
     end
+
+    test "Recipe.by_name will return nil if no recipes match the name provided" do
+        VCR.use_cassette("recipes") do
+            recipe = Recipe.by_name("avocado", "Gobblygood")
+            assert_nil recipe
+        end
+    end
 end
