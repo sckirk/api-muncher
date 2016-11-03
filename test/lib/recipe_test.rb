@@ -24,7 +24,7 @@ class ChannelTest < ActiveSupport::TestCase
         assert_equal r.dietary_info, dietary_info
     end
 
-    test "ArgumentError will be raised and Recipe object will not be created if it's missing one or more parameters" do
+    test "ArgumentError will be raised and Recipe object will not be created if it's missing one or more parameters from the API call" do
         name = "test name"
         image = "https://www.edamam.com/web-img/108/108bb897a2fd724bc1461d77031a560f.jpg"
         url = "test_url.com"
