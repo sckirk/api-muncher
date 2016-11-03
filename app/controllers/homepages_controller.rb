@@ -4,4 +4,6 @@ class HomepagesController < ApplicationController
             @results = Recipe.results(params[:search])
         end
     end
+
+    def show;end
 end

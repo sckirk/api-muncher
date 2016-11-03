@@ -1,0 +1,13 @@
+<%= form_tag(root_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %>
+    <%= submit_tag "Search" %>
+<% end %>
+
+<h1>Select a recipe to see its details:</h1>
+<% if @results.present? %>
+    <% @results.each do |result| %>
+        <p><%= result.name %></p>
+    <% end %>
+<% else %>
+    <p>There are no recipes containing the term(s): <%= params[:search] %>.</p>
+<% end %>
