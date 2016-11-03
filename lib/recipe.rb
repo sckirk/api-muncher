@@ -14,8 +14,8 @@ class Recipe
     end
 
     # Return either the first (probably only) recipe matching the given name, or nil.
-    def self.by_name(name)
-        matches = self.results.select do |r|
+    def self.by_name(query_term, name)
+        matches = self.results(query_term).select do |r|
             r.name == name
         end
         return matches.first

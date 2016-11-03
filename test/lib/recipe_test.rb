@@ -58,7 +58,7 @@ class ChannelTest < ActiveSupport::TestCase
         end
     end
 
-    test "Recipe.by_name will return an array of Recipes" do
+    test "Recipe.by_name will return one Recipe object" do
         VCR.use_cassette("recipes") do
             recipe = Recipe.by_name("avocado", "Avocado Hollandaise")
             assert_kind_of Recipe, recipe
