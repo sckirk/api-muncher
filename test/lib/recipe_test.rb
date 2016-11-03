@@ -41,4 +41,20 @@ class ChannelTest < ActiveSupport::TestCase
             return missing_image_and_ingredients
         end
     end
+
+
+    #
+    # CLASS methods
+    #
+
+    test "Recipe.results will return an array of Recipes" do
+        VCR.use_cassette("recipes") do
+            recipes = Recipe.results("avocado")
+            assert_kind_of Array, recipes
+            assert_not recipes.empty?
+            recipes.each do |recipe|
+                assert_kind_of Recipe, recipe
+            end
+        end
+    end
 end

@@ -8,4 +8,8 @@ class Recipe
         @ingredients = ingredients
         @dietary_info = dietary_info
     end
+
+    def self.results(query_term)
+        return EdamamApiWrapper.search_results(query_term)
+    end
 end

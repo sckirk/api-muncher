@@ -5,7 +5,7 @@ class EdamamApiWrapperTest < ActiveSupport::TestCase
         assert true
     end
 
-    test "search method returns an array of Recipes" do
+    test "EdamamApiWrapper.search_results will return an array of Recipes" do
         VCR.use_cassette("recipes") do
             recipes = EdamamApiWrapper.search_results("avocado")
             assert_kind_of Array, recipes
