@@ -4,5 +4,5 @@ Rails.application.routes.draw do
 
     # I know I don't need the root
     root 'homepages#index'
-    resources :homepages, only: [:show]
+    resources :homepages, only: [:show], param: :name
 end
