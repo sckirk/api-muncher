@@ -16,9 +16,10 @@ class HomepagesControllerTest < ActionController::TestCase
 
     # This one doesn't work either--how do I set up this test correctly?
     test "will get show" do
+        session[:search] = "avocado"
         VCR.use_cassette("recipes") do
             recipe = Recipe.by_name("avocado", "Avocado Hollandaise")
-            get :show, name: recipe.name
+            get :show, { name: recipe.name }
             assert_response :success
         end
     end
