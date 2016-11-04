@@ -15,12 +15,10 @@ class RecipesControllerTest < ActionController::TestCase
         end
     end
 
-    test "will redirect to index for show requests without a valid name parameter" do
-        invalid = "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
-        get :show, { id: invalid }
+    test "will redirect to index if no search term has been provided" do
+        valid_uri = "7b359790eab01e56f8f58ed075b78f9d"
+        get :show, { id: valid_uri, search: nil }
         assert_response :redirect
         assert_redirected_to recipes_path
     end
-
-
 end

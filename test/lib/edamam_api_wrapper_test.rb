@@ -24,4 +24,19 @@ class EdamamApiWrapperTest < ActiveSupport::TestCase
         end
     end
 
+    test "EdamamApiWrapper.find_one will return one recipe object given a valid URI" do
+        valid_uri = "7b359790eab01e56f8f58ed075b78f9d"
+        VCR.use_cassette("recipes") do
+            recipe = EdamamApiWrapper.find_one(valid_uri)
+            assert_kind_of Recipe, recipe
+        end
+    end
+
+    test "EdamamApiWrapper.find_one will return nil given a valid URI" do
+        invalid_uri = "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+        VCR.use_cassette("recipes") do
+            recipe = EdamamApiWrapper.find_one(invalid_uri)
+            assert_nil recipe
+        end
+    end
 end
