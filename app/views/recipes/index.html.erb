@@ -1,0 +1,32 @@
+<h1>Welcome to Suzinator's Recipe Search!</h1>
+
+<%= form_tag(root_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %>
+    <%= submit_tag "Search" %>
+<% end %>
+
+<h3>Select a recipe to see its details:</h3>
+
+<% if @results.present? %>
+    <ul class="row small-up-2 large-up-4">
+    <% @results.each do |result| %>
+        <li class="column">
+            <section>
+                <%= link_to recipe_path(result.name, search: params[:search], page: @page) do %>
+                    <%= image_tag "#{ result.image }", alt: "#{ result.name }", class: "recipe-image" %>
+                    <h3><%= result.name %></h3>
+                <% end %>
+            </section>
+        </li>
+    <% end %>
+    </ul>
+<% else %>
+    <p>There are no recipes containing the term(s): <%= params[:search] %>.</p>
+<% end %>
+
+<p>
+    <% if @page > 1 %>
+        <%= link_to "prev 10", root_path(page: @page - 1, search: params[:search]), class: "button" %>
+    <% end %>
+- current page -
+<%= link_to "next 10", root_path(page: @page + 1, search: params[:search]), class: "button" %></p>
