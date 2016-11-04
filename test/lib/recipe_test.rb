@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ChannelTest < ActiveSupport::TestCase
+class RecipeTest < ActiveSupport::TestCase
     test "whether the tests are running" do
         assert true
     end
@@ -49,7 +49,7 @@ class ChannelTest < ActiveSupport::TestCase
 
     test "Recipe.results will return an array of Recipes" do
         VCR.use_cassette("recipes") do
-            recipes = Recipe.results("avocado")
+            recipes = Recipe.results("avocado", 1)
             assert_kind_of Array, recipes
             assert_not recipes.empty?
             recipes.each do |recipe|
@@ -60,7 +60,7 @@ class ChannelTest < ActiveSupport::TestCase
 
     test "Recipe.by_name will return one Recipe object" do
         VCR.use_cassette("recipes") do
-            recipe = Recipe.by_name("avocado", "Avocado Hollandaise")
+            recipe = Recipe.by_name("avocado", "Avocado Hollandaise", 1)
             assert_kind_of Recipe, recipe
             assert_not_nil recipe
         end
@@ -68,7 +68,7 @@ class ChannelTest < ActiveSupport::TestCase
 
     test "Recipe.by_name will return nil if no recipes match the name provided" do
         VCR.use_cassette("recipes") do
-            recipe = Recipe.by_name("avocado", "Gobblygood")
+            recipe = Recipe.by_name("avocado", "Gobblygood", 1)
             assert_nil recipe
         end
     end

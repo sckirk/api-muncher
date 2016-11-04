@@ -7,7 +7,7 @@ class EdamamApiWrapperTest < ActiveSupport::TestCase
 
     test "EdamamApiWrapper.search_results will return an array of Recipes on a valid search term" do
         VCR.use_cassette("recipes") do
-            recipes = EdamamApiWrapper.search_results("avocado")
+            recipes = EdamamApiWrapper.search_results("avocado", 1)
             assert_kind_of Array, recipes
             assert_not recipes.empty?
             recipes.each do |recipe|
@@ -18,7 +18,7 @@ class EdamamApiWrapperTest < ActiveSupport::TestCase
 
     test "EdamamApiWrapper.search_results will return an empty array on an invalid search term" do
         VCR.use_cassette("recipes") do
-            recipes = EdamamApiWrapper.search_results("gobblygook")
+            recipes = EdamamApiWrapper.search_results("gobblygook", 1)
             assert_kind_of Array, recipes
             assert recipes.empty?
         end
