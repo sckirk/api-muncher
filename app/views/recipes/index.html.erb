@@ -29,6 +29,6 @@
         <%= link_to "prev 10", root_path(page: @page - 1, search: params[:search]), class: "button" %>
     <% end %>
 - current page -
-    <% if @page < @total_pages %>
-        <%= link_to "next 10", root_path(page: (@page + 1), search: params[:search]), class: "button" %></p>
-    <% end %>
+    <!-- <%# if @page < @total_pages %>
+        <%#= link_to "next 10", root_path(page: (@page + 1), search: params[:search]), class: "button" %></p>
+    <%# end %> -->

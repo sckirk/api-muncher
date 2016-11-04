@@ -8,11 +8,9 @@ class RecipesControllerTest < ActionController::TestCase
     end
 
     test "will get show" do
-        params[:search] = "avocado"
-        page = 1
         VCR.use_cassette("recipes") do
             recipe = Recipe.by_name(params[:search], "Avocado Hollandaise", page)
-            get :show, { name: recipe.name }
+            get :show, { name: recipe.name, search: "avocado", page: 1 }
             assert_response :success
         end
     end

@@ -10,21 +10,14 @@ class EdamamApiWrapper
         url = BASE_URL + query_term + "&app_id=#{ ID }&app_key=#{ KEY }&from=#{ begin_index }"
         data = HTTParty.get(url)
         recipe_results = []
+        # total_items = data["count"]
         if data["hits"]
             data["hits"].each do |recipe|
-                wrapper = Recipe.new(recipe["recipe"]["label"], recipe["recipe"]["image"], recipe["recipe"]["url"], recipe["recipe"]["ingredientLines"], recipe["recipe"]["healthLabels"])
+                wrapper = Recipe.new(recipe["recipe"]["label"], recipe["recipe"]["image"], recipe["recipe"]["url"], recipe["recipe"]["ingredientLines"], recipe["recipe"]["healthLabels"], recipe["recipe"]["uri"])
                 recipe_results << wrapper
             end
         end
         return recipe_results
-    end
-
-    def self.total_items(query_term)
-        url = BASE_URL + query_term + "&app_id=#{ ID }&app_key=#{ KEY }"
-        data = HTTParty.get(url)
-        if data["hits"]
-            total_items = data["count"]
-        end
-        return total_items
+        # , total_items
     end
 end
