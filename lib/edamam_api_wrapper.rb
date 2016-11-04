@@ -20,4 +20,13 @@ class EdamamApiWrapper
         return recipe_results
         # , total_items
     end
+
+    def self.find_one(uri)
+        url = BASE_URL + uri + "&app_id=#{ ID }&app_key=#{ KEY }"
+        data = HTTParty.get(url)
+        if data["count"] == 1
+            one_recipe = Recipe.new(data["hits"][0]["recipe"]["label"], data["hits"][0]["recipe"]["image"], data["hits"][0]["recipe"]["url"], data["hits"][0]["recipe"]["ingredientLines"], data["hits"][0]["recipe"]["healthLabels"], data["hits"][0]["recipe"]["uri"])
+        end
+        return one_recipe
+    end
 end

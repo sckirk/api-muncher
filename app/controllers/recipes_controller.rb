@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
         if params[:search].nil?
             redirect_to recipes_path
         else
-            @result = Recipe.by_name(params[:search], params[:name], params[:page])
+            @result = EdamamApiWrapper.find_one(params[:id])
         end
     end
 end

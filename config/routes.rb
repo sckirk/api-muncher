@@ -4,6 +4,5 @@ Rails.application.routes.draw do
 
 
     root 'recipes#index'
-    resources :recipes, only: [:index]
-    resources :recipes, only: [:show], param: :name
+    resources :recipes, only: [:index, :show]
 end

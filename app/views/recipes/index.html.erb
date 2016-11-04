@@ -12,7 +12,7 @@
     <% @results.each do |result| %>
         <li class="column">
             <section>
-                <%= link_to recipe_path(result.name, search: params[:search], page: @page) do %>
+                <%= link_to recipe_path(result.uri, search: params[:search], page: @page) do %>
                     <%= image_tag "#{ result.image }", alt: "#{ result.name }", class: "recipe-image" %>
                     <h3><%= result.name %></h3>
                 <% end %>
