@@ -1,12 +1,12 @@
 <p>
-    Recipe details...
+    Recipe at a glance...
 </p>
 <ul class="row small-up-1 large-up-2">
     <li class="column">
         <h1><%= @result.name %></h1>
 
         <p>
-            <%= link_to "Original recipe - website", @result.url, :target => "_blank" %>
+            <%= link_to "Find recipe details here...", @result.url, :target => "_blank", class: "button" %>
         </p>
 
         <h4>Ingredients:</h4>

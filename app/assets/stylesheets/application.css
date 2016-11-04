@@ -23,7 +23,7 @@
  }
 
  .button {
-  font: bold 1em Arial;
+  font: bold 3em;
   text-decoration: none;
   background-color: #EEEEEE;
   color: #333333;
@@ -37,6 +37,7 @@
 body {
     background-image: url(background.jpg);
     background-size: 100% 100%;
+    font-family: 'Catamaran', sans-serif, arial;
 }
 
 html {

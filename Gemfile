@@ -1,6 +1,3 @@
-# Wouldn't it make more sense to have some of the gems in the below group ONLY in the test group? Ask DAN for better understanding.
-# group :development, :test do
-
 source 'https://rubygems.org'
 
 
@@ -46,10 +43,6 @@ group :development, :test do
     gem 'byebug'
     gem 'dotenv-rails'
     gem "better_errors"
-
-    # Use VCR for mocking HTTP requests
-    gem 'minitest-vcr'
-    gem 'webmock'
 end
 
 group :development do
@@ -65,4 +58,7 @@ end
 
 group :test do
   gem 'minitest-reporters'
+  # Use VCR for mocking HTTP requests
+  gem 'minitest-vcr'
+  gem 'webmock'
 end
