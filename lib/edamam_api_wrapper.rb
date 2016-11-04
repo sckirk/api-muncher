@@ -5,8 +5,9 @@ class EdamamApiWrapper
     ID = ENV["id"]
     KEY = ENV["key"]
 
-    def self.search_results(query_term)
-        url = BASE_URL + query_term + "&app_id=#{ ID }&app_key=#{ KEY }"
+    def self.search_results(query_term, page)
+        begin_index = (page.to_i - 1) * 10
+        url = BASE_URL + query_term + "&app_id=#{ ID }&app_key=#{ KEY }&from=#{ begin_index }"
         data = HTTParty.get(url)
         recipe_results = []
         if data["hits"]

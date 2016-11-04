@@ -9,13 +9,13 @@ class Recipe
         @dietary_info = dietary_info
     end
 
-    def self.results(query_term)
-        return EdamamApiWrapper.search_results(query_term)
+    def self.results(query_term, page)
+        return EdamamApiWrapper.search_results(query_term, page)
     end
 
     # Return either the first (probably only) recipe matching the given name, or nil.
-    def self.by_name(query_term, name)
-        matches = self.results(query_term).select do |r|
+    def self.by_name(query_term, name, page)
+        matches = self.results(query_term, page).select do |r|
             r.name == name
         end
         return matches.first
