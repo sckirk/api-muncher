@@ -5,9 +5,14 @@ class EdamamApiWrapper
     ID = ENV["id"]
     KEY = ENV["key"]
 
-    def self.search_results(query_term, page)
+    def self.search_results(query_term, page, labels)
         begin_index = (page.to_i - 1) * 10
-        url = BASE_URL + query_term + "&app_id=#{ ID }&app_key=#{ KEY }&from=#{ begin_index }"
+        label_input = labels.join(', ')
+        label_query_string = ""
+        if !labels.empty?
+            label_query_string = "&healthLabels=#{ label_input }"
+        end
+        url = BASE_URL + query_term + "&app_id=#{ ID }&app_key=#{ KEY }&from=#{ begin_index }" +  label_query_string
         data = HTTParty.get(url)
         recipe_results = []
         total_items = data["count"]

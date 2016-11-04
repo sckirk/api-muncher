@@ -1,5 +1,33 @@
 <%= form_tag(recipes_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %>
+    <%= check_box_tag("health_label_vegan") %>
+    <%= label_tag("health_label_vegan", "Vegan") %>
+    <%= check_box_tag(:health_label_vegetarian) %>
+    <%= label_tag(:health_label_vegetarian, "Vegetarian") %>
+    <%= check_box_tag(:health_label_paleo) %>
+    <%= label_tag(:health_label_paleo, "Paleo") %>
+    <%= check_box_tag("health_label_dairy-free") %>
+    <%= label_tag("health_label_dairy-free", "Dairy-Free") %>
+    <%= check_box_tag(:health_label_gluten_free) %>
+    <%= label_tag(:health_label_gluten_free, "Gluten-Free") %>
+    <%= check_box_tag(:health_label_wheat_free) %>
+    <%= label_tag(:health_label_wheat_free, "Wheat-Free") %>
+    <%= check_box_tag(:health_label_fat_free) %>
+    <%= label_tag(:health_label_fat_free, "Fat-Free") %>
+    <%= check_box_tag(:health_label_low_sugar) %>
+    <%= label_tag(:health_label_low_sugar, "Low-Sugar") %>
+    <%= check_box_tag(:health_label_egg_free) %>
+    <%= label_tag(:health_label_egg_free, "Egg-Free") %>
+    <%= check_box_tag(:health_label_peanut_free) %>
+    <%= label_tag(:health_label_peanut_free, "Peanut-Free") %>
+    <%= check_box_tag(:health_label_tree_nut_free) %>
+    <%= label_tag(:health_label_tree_nut_free, "Tree-Nut-Free") %>
+    <%= check_box_tag(:health_label_soy_free) %>
+    <%= label_tag(:health_label_soy_free, "Soy-Free") %>
+    <%= check_box_tag(:health_label_fish_free) %>
+    <%= label_tag(:health_label_fish_free, "Fish-Free") %>
+    <%= check_box_tag(:health_label_shellfish_free) %>
+    <%= label_tag(:health_label_shellfish_free, "Shellfish-Free") %>
     <%= submit_tag "Search" %>
 <% end %>
 
@@ -19,17 +47,17 @@
     <% end %>
     </ul>
 <% else %>
-    <p>There are no recipes containing the term(s): <%= params[:search] %>.</p>
+    <p>There are no recipes containing the term(s): <%= params[:search] %> or with the following filters: <%= params[:labels] %>.</p>
 <% end %>
 
 <p>Total recipes: <%= @total_items %></p>
 
 <p><% if @page > 1 %>
-        <%= link_to "prev 10", root_path(page: @page - 1, search: params[:search]), class: "button" %>
+        <%= link_to "prev 10", root_path(page: @page - 1, search: params[:search]), labels: params[:labels], class: "button" %>
 <% end %>
 ~ current page ~
 <% if @page < @total_pages %>
-    <%= link_to "next 10", root_path(page: (@page + 1), search: params[:search]), class: "button" %></p>
+    <%= link_to "next 10", root_path(page: (@page + 1), search: params[:search]), labels: params[:labels], class: "button" %></p>
 <% end %>
 </p>
 
