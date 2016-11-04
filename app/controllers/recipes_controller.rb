@@ -6,7 +6,7 @@ class RecipesController < ApplicationController
         end
         @total_pages = ((@total_items.to_i + 9) / 10) || 1
     end
-
+  
     def show
         if params[:search].nil?
             redirect_to recipes_path
