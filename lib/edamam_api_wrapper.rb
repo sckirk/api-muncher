@@ -18,4 +18,13 @@ class EdamamApiWrapper
         end
         return recipe_results
     end
+
+    def self.total_items(query_term)
+        url = BASE_URL + query_term + "&app_id=#{ ID }&app_key=#{ KEY }"
+        data = HTTParty.get(url)
+        if data["hits"]
+            total_items = data["count"]
+        end
+        return total_items
+    end
 end

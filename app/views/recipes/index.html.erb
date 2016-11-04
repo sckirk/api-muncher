@@ -1,6 +1,6 @@
 <h1>Welcome to Suzinator's Recipe Search!</h1>
 
-<%= form_tag(root_path, :method => "get", id: "search-form") do %>
+<%= form_tag(recipes_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %>
     <%= submit_tag "Search" %>
 <% end %>
@@ -23,10 +23,12 @@
 <% else %>
     <p>There are no recipes containing the term(s): <%= params[:search] %>.</p>
 <% end %>
-
+<p>Total recipes: <%= @total_items %></p>
 <p>
     <% if @page > 1 %>
         <%= link_to "prev 10", root_path(page: @page - 1, search: params[:search]), class: "button" %>
     <% end %>
 - current page -
-<%= link_to "next 10", root_path(page: @page + 1, search: params[:search]), class: "button" %></p>
+    <% if @page < @total_pages %>
+        <%= link_to "next 10", root_path(page: (@page + 1), search: params[:search]), class: "button" %></p>
+    <% end %>
